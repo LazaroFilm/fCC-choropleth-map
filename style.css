@@ -21,6 +21,7 @@ svg {
 
 #tooltip {
   visibility: hidden;
+  /* color: red; */
   height: auto;
   width: auto;
 }

@@ -50,14 +50,19 @@ let drawMap = () => {
     })
     .on("mouseover", (countyDataItem) => {
       tooltip.transition().style("visibility", "visible");
-      let id = countyDataItem["id"];
+      let id = countyDataItem.target["__data__"].id;
       let county = educationData.find((county) => {
         return county["fips"] === id;
       });
       console.log(county);
       tooltip.text(
-        `${county["fips"]} - ${county["area_name"]}, ${county["state"]}: ${county["bachelorsOrHigher"]}%`
+        // "TEST COUNTY"
+        `${county.fips} - ${county.area_name}, ${county.state}: ${county.bachelorsOrHigher}`
       );
+      tooltip.attr("data-education", county.bachelorsOrHigher);
+    })
+    .on("mouseout", () => {
+      tooltip.transition().style("visibility", "hidden");
     });
 };
 
